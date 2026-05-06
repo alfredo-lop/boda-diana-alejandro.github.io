@@ -2,148 +2,183 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda Diana & Alejandro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda Diana y Alejandro</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>
          :root {
-            --gold: #c5a059;
-            --cream: #fdfbf7;
+            --gold: #b89b5e;
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--cream);
-            color: #3d3d3d;
-            margin: 0;
+            color: #4a4a4a;
+            background: url('../pag/img/fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         
-        .font-cursive {
+        .font-script {
             font-family: 'Great Vibes', cursive;
         }
         
-        .font-cinzel {
-            font-family: 'Cinzel', serif;
-        }
-        /* Animación Corazón Calendario */
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 155, 94, 0.2);
         }
         
-        .heart-date {
-            background-color: var(--gold);
-            color: white;
-            width: 40px;
-            height: 40px;
+        .full-page-section {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            margin: auto;
-            animation: pulse 1.5s infinite;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(197, 160, 89, 0.4);
+            padding: 2rem 1.5rem;
         }
+        /* Animación suave para la imagen */
         
-        .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
+        .img-novios {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 2rem;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- PORTADA -->
-    <section class="hero-bg h-screen flex flex-col items-center justify-center text-center text-white px-4">
-        <span class="uppercase tracking-[0.5em] text-xs mb-6 drop-shadow-md">Nuestra Boda</span>
-        <h1 class="font-cursive text-7xl md:text-9xl text-[#e2c286] mb-4 drop-shadow-lg">Diana & Alejandro</h1>
-        <div class="w-24 h-[1px] bg-[#e2c286]/60 my-8"></div>
-        <p class="tracking-[0.3em] text-lg uppercase drop-shadow-md">08 . 08 . 2026</p>
-    </section>
+    <!-- MÚSICA -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <audio id="weddingMusic" loop><source src="musica.mp3" type="audio/mpeg"></audio>
+        <button onclick="toggleMusic()" class="glass-card p-4 rounded-full shadow-2xl text-[#b89b5e] flex items-center gap-2 hover:scale-105 transition-all">
+            <span id="musicIcon">🎵</span>
+            <span id="musicText" class="text-[10px] font-bold uppercase tracking-widest">Música</span>
+        </button>
+    </div>
 
-    <!-- CONTADOR -->
-    <section class="py-12 bg-white border-y border-[#c5a059]/10 text-center">
-        <div class="flex justify-center gap-8 md:gap-16">
-            <div><span id="days" class="block text-3xl text-[#c5a059]">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400">Días</span></div>
-            <div><span id="hours" class="block text-3xl text-[#c5a059]">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400">Hrs</span></div>
-            <div><span id="mins" class="block text-3xl text-[#c5a059]">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400">Min</span></div>
-            <div><span id="secs" class="block text-3xl text-[#c5a059]">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400">Seg</span></div>
-        </div>
-    </section>
+    <main class="w-full max-w-2xl mx-auto">
 
-    <!-- FRASE -->
-    <section class="py-24 px-8 text-center max-w-3xl mx-auto">
-        <p class="font-cursive text-4xl md:text-5xl text-[#c5a059]">
-            "Cada paso nos trajo hasta aquí y hoy decidimos construir un para siempre"
-        </p>
-    </section>
+        <!-- SECCIÓN 1: PORTADA CON FOTO -->
+        <section class="full-page-section">
+            <div class="glass-card w-full p-10 text-center rounded-3xl shadow-2xl">
+                <!-- IMAGEN DE LOS NOVIOS -->
+                <img src="../pag/img/golden-wedding-rings-white-rose-from-wedding-bouquet.jpg" alt="Diana y Alejandro" class="img-novios">
 
-    <!-- CALENDARIO (El que te gustó) -->
-    <section class="py-16 px-4">
-        <div class="max-w-md mx-auto bg-white p-10 shadow-2xl rounded-tr-[50px] rounded-bl-[50px] text-center border border-[#c5a059]/10 relative">
-            <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-white px-6 py-2 border border-[#c5a059]/20 font-cinzel text-[#c5a059] tracking-widest uppercase text-sm">Agosto</div>
-            <h3 class="font-bold text-2xl mt-4 mb-6 uppercase tracking-widest">Sábado 08</h3>
-            <div class="grid grid-cols-7 gap-2 text-sm text-gray-400 mb-6">
-                <span class="font-bold">D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span class="font-bold">S</span>
-                <span></span><span></span><span></span><span></span><span></span><span></span><span>1</span>
-                <span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
-                <span class="heart-date">8</span>
-                <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                <h1 class="font-script text-7xl text-[#b89b5e] mb-4">Diana y Alejandro</h1>
+                <p class="text-lg italic text-gray-600 mb-10 leading-relaxed">
+                    "¡Cada paso nos trajo hasta aquí y hoy decidimos construir un para siempre!"
+                </p>
+
+                <!-- CONTADOR AL 8 DE AGOSTO -->
+                <div class="flex justify-around py-8 border-y border-[#b89b5e]/20" id="timer">
+                    <div class="text-center"><span id="days" class="text-4xl font-bold text-[#b89b5e] block">00</span><span class="text-xs uppercase tracking-tighter">Días</span></div>
+                    <div class="text-center"><span id="hours" class="text-4xl font-bold text-[#b89b5e] block">00</span><span class="text-xs uppercase tracking-tighter">Horas</span></div>
+                    <div class="text-center"><span id="mins" class="text-4xl font-bold text-[#b89b5e] block">00</span><span class="text-xs uppercase tracking-tighter">Min</span></div>
+                    <div class="text-center"><span id="secs" class="text-4xl font-bold text-[#b89b5e] block">00</span><span class="text-xs uppercase tracking-tighter">Seg</span></div>
+                </div>
             </div>
-            <p class="text-lg border-t pt-6 border-[#c5a059]/10 tracking-widest uppercase">16:00 HORAS</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- UBICACIONES -->
-    <section class="py-20 bg-[#f9f7f2] px-6 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto rounded-3xl my-10">
-        <div class="bg-white p-8 rounded-xl shadow-sm text-center border-b-4 border-[#c5a059]">
-            <h3 class="font-cinzel text-[#c5a059] font-bold mb-4">CEREMONIA</h3>
-            <p class="text-gray-700 font-bold mb-6">Parroquia San Martín Obispo</p>
-            <a href="https://maps.google.com" class="inline-block px-8 py-2 border border-[#c5a059] text-[#c5a059] text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-white transition">Ver Mapa</a>
-        </div>
-        <div class="bg-white p-8 rounded-xl shadow-sm text-center border-b-4 border-[#c5a059]">
-            <h3 class="font-cinzel text-[#c5a059] font-bold mb-4">RECEPCIÓN</h3>
-            <p class="text-gray-700 font-bold mb-6">Salón Club de Leones</p>
-            <a href="https://maps.google.com" class="inline-block px-8 py-2 border border-[#c5a059] text-[#c5a059] text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-white transition">Cómo Llegar</a>
-        </div>
-    </section>
+        <!-- SECCIÓN 2: DATOS DE LA BODA -->
+        <section class="full-page-section">
+            <div class="glass-card w-full p-10 text-center rounded-3xl shadow-2xl space-y-10">
+                <p class="uppercase tracking-[0.2em] text-xs leading-loose">
+                    Tenemos el honor de invitarle, junto con su apreciable familia, a celebrar con nosotros el día de nuestra boda.
+                </p>
 
-    <!-- RSVP -->
-    <section class="py-24 text-center px-6">
-        <div class="max-w-xl mx-auto bg-white p-12 shadow-xl rounded-2xl border border-[#c5a059]/10">
-            <h2 class="font-cinzel text-2xl mb-6 uppercase tracking-widest">Confirmación</h2>
-            <p class="text-gray-500 italic mb-10 text-sm">Favor de confirmar antes del 20 de Julio</p>
-            <a href="https://wa.me/521234567890" class="bg-[#25d366] text-white px-10 py-4 rounded-full uppercase text-xs tracking-widest font-bold shadow-lg hover:scale-105 transition transform">Confirmar Asistencia</a>
-        </div>
-    </section>
+                <div>
+                    <p class="text-3xl font-light">Sábado <span class="text-5xl font-bold text-[#b89b5e]">8</span> Agosto</p>
+                    <p class="text-xl mt-2 font-semibold tracking-widest">16:00 HORAS</p>
+                </div>
 
-    <footer class="py-20 text-center">
-        <p class="font-cursive text-6xl text-[#c5a059]">D & A</p>
-    </footer>
+                <div class="grid md:grid-cols-2 gap-8 pt-6">
+                    <div class="space-y-2">
+                        <h3 class="text-[#b89b5e] font-bold uppercase text-[10px] tracking-widest">Ceremonia Religiosa</h3>
+                        <p class="font-semibold text-sm">Parroquia San Martín Obispo de Tours</p>
+                        <a target="_blank" href="https://maps.app.goo.gl/dQMKHvYA7cNMd6sHA" class="inline-block text-[#b89b5e] border-b border-[#b89b5e] text-[10px] font-bold uppercase mt-2">Ver Ubicación</a>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-[#b89b5e] font-bold uppercase text-[10px] tracking-widest">Recepción</h3>
+                        <p class="font-semibold text-sm">Salón Club de Leones</p>
+                        <p class="text-[10px]">Carr. Internacional 6, Col. Centro.</p>
+                    </div>
+                </div>
+
+                <!-- PADRES EXTRAÍDOS DE TUS IMÁGENES -->
+                <div class="border-t border-[#b89b5e]/20 pt-8 grid grid-cols-2 gap-4 text-[10px]">
+                    <div>
+                        <h4 class="font-bold uppercase mb-2">Padres de la Novia</h4>
+                        <p>Carolina Pérez Mendez<br>Gregorio Mirón Cuaxilo</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold uppercase mb-2">Padres del Novio</h4>
+                        <p>Cristina Méndez Valencia<br>Alfonso Cano Pérez</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: PADRINOS Y WHATSAPP -->
+        <section class="full-page-section">
+            <div class="glass-card w-full p-10 text-center rounded-3xl shadow-2xl space-y-10">
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase mb-3 text-[#b89b5e] tracking-widest">Padrinos</h4>
+                    <p class="text-sm italic">Maria Pascuala Arellano Ruiz<br>Jose Laurearano Ortega García</p>
+                </div>
+
+                <div class="bg-white/50 p-8 rounded-2xl border border-[#b89b5e]/10">
+                    <h2 class="font-script text-5xl text-[#b89b5e] mb-6">Confirmación</h2>
+                    <div class="space-y-4">
+                        <input type="text" id="guestName" placeholder="Tu nombre" class="w-full p-4 rounded-xl border-none shadow-inner text-sm bg-white">
+                        <select id="totalGuests" class="w-full p-4 rounded-xl border-none shadow-inner text-sm text-gray-500 bg-white">
+                            <option value="">¿Cuántas personas?</option>
+                            <option value="1">1 Persona</option><option value="2">2 Personas</option>
+                            <option value="3">3 Personas</option><option value="4">4 Personas</option>
+                            <option value="5">5 Personas</option>
+                        </select>
+                        <button onclick="sendRSVP()" class="w-full bg-green-800 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg active:scale-95 transition-all">
+                            Confirmar por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <p class="font-script text-4xl text-[#b89b5e]">¡Te esperamos!</p>
+            </div>
+        </section>
+    </main>
 
     <script>
-        const target = new Date('August 8, 2026 16:00:00').getTime();
+        // Cuenta regresiva para el 8 de agosto de 2026
+        const weddingDate = new Date("Aug 8, 2026 16:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
-            const d = target - now;
-            document.getElementById('days').innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-            document.getElementById('hours').innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('mins').innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('secs').innerText = Math.floor((d % (1000 * 60)) / 1000);
+            const diff = weddingDate - now;
+            document.getElementById("days").innerText = Math.floor(diff / 86400000);
+            document.getElementById("hours").innerText = Math.floor((diff % 86400000) / 3600000);
+            document.getElementById("mins").innerText = Math.floor((diff % 3600000) / 60000);
+            document.getElementById("secs").innerText = Math.floor((diff % 60000) / 1000);
         }, 1000);
+
+        // Envío de WhatsApp al número 522481557137
+        function sendRSVP() {
+            const name = document.getElementById('guestName').value;
+            const count = document.getElementById('totalGuests').value;
+            const phone = "522481557137";
+            if (!name || !count) return alert("Por favor completa tus datos");
+            const msg = `¡Hola! Confirmo mi asistencia a la boda de Diana y Alejandro.\n\nNombre: ${name}\nLugares: ${count}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function toggleMusic() {
+            const m = document.getElementById('weddingMusic');
+            const txt = document.getElementById('musicText');
+            m.paused ? (m.play(), txt.innerText = "Pausar") : (m.pause(), txt.innerText = "Música");
+        }
     </script>
 </body>
 
