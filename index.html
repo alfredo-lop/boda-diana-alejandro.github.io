@@ -1,194 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boda Diana y Alejandro</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS para animaciones al scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>
-         :root {
-            --gold: #b89b5e;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: #4a4a4a;
-            background: url('../pag/img/fondo.jpg') no-repeat center center fixed;
-            background-size: cover;
-            overflow-x: hidden;
-        }
-        
-        .font-script {
-            font-family: 'Great Vibes', cursive;
-        }
-        /* Efecto de capas orgánicas (sin bloques cuadrados) */
-        
-        .floating-content {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 50% 50% 0 0 / 10% 10% 0 0;
-            /* Curva orgánica arriba */
-            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.05);
-        }
-        
-        .img-novios-circular {
-            width: 280px;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 8px solid white;
-            box-shadow: 0 15px 35px rgba(184, 155, 94, 0.2);
-            transition: transform 0.5s ease;
-        }
-        
-        .img-novios-circular:hover {
-            transform: scale(1.05);
-        }
-        
-        .btn-gold {
-            background: linear-gradient(135deg, #b89b5e 0%, #dec28a 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(184, 155, 94, 0.3);
-        }
-        /* Líneas decorativas elegantes */
-        
-        .divider {
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #b89b5e, transparent);
-            margin: 2rem auto;
-        }
+        :root { --gold: #b89b5e; }
+        html { scroll-behavior: smooth; }
+        /* RUTA CORREGIDA: img/fondo.jpg */
+        body { font-family: 'Montserrat', sans-serif; color: #4a4a4a; background: url('img/fondo.jpg') no-repeat center center fixed; background-size: cover; overflow-x: hidden; }
+        .font-script { font-family: 'Great Vibes', cursive; }
+        .text-shadow-elegant { text-shadow: 2px 4px 6px rgba(184, 155, 94, 0.25); }
+        .floating-content { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 60px 60px 0 0; box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.05); }
+        .img-novios-circular { width: 280px; height: 280px; object-fit: cover; border-radius: 50%; border: 8px solid white; box-shadow: 0 15px 35px rgba(184, 155, 94, 0.2); }
+        .hotel-card { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(184, 155, 94, 0.15); transition: all 0.4s ease; border-radius: 2rem; overflow: hidden; }
+        .btn-gold { background: linear-gradient(135deg, #b89b5e 0%, #dec28a 100%); border-radius: 2rem; transition: all 0.3s ease; }
+        .divider { width: 80px; height: 1px; background: #b89b5e; margin: 2rem auto; opacity: 0.4; }
     </style>
 </head>
+<body onclick="iniciarMusica()">
 
-<body>
-
-    <!-- MÚSICA FLOTANTE -->
     <div class="fixed top-6 right-6 z-50">
-        <audio id="weddingMusic" loop><source src="musica.mp3" type="audio/mpeg"></audio>
-        <button onclick="toggleMusic()" class="bg-white/80 backdrop-blur-md p-4 rounded-full shadow-lg text-[#b89b5e] flex items-center gap-2 border border-[#b89b5e]/20">
-            <span id="musicIcon" class="animate-pulse">🎵</span>
-            <span id="musicText" class="text-[9px] font-bold uppercase tracking-widest">Reproducir</span>
+        <audio id="weddingMusic" loop preload="auto">
+            <source src="img/musica.mp3" type="audio/mpeg">
+        </audio>
+        <button onclick="toggleMusic(event)" class="bg-white/80 backdrop-blur-md p-3 px-5 rounded-full shadow-lg text-[#b89b5e] flex items-center gap-2 border border-[#b89b5e]/20">
+            <span id="musicText" class="text-[9px] font-bold uppercase tracking-widest">Activar Música</span>
         </button>
     </div>
 
-    <!-- 1. HERO / PORTADA -->
     <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6">
-        <div data-aos="fade-up" data-aos-duration="2000">
-            <img src="../pag/img/golden-wedding-rings-white-rose-from-wedding-bouquet.jpg" alt="Diana y Alejandro" class="img-novios-circular mb-8">
-            <h1 class="font-script text-7xl md:text-8xl text-[#b89b5e] drop-shadow-sm">Diana y Alejandro</h1>
+        <div data-aos="fade-up">
+            <img src="img/golden-wedding-rings-white-rose-from-wedding-bouquet.jpg" alt="Diana y Alejandro" class="img-novios-circular mb-8 mx-auto">
+            <h1 class="font-script text-7xl md:text-8xl text-[#b89b5e] text-shadow-elegant">Diana y Alejandro</h1>
             <div class="divider"></div>
-            <p class="text-lg md:text-xl italic text-gray-600 max-w-md mx-auto leading-relaxed">
+            <p class="text-lg italic text-gray-600 max-w-md mx-auto leading-relaxed">
                 "¡Cada paso nos trajo hasta aquí y hoy decidimos construir un para siempre!"
             </p>
         </div>
-
-        <!-- Flecha indicadora -->
-        <div class="absolute bottom-10 animate-bounce text-[#b89b5e]">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        </div>
     </section>
 
-    <!-- 2. CONTENIDO PRINCIPAL (EFECTO FLOTANTE) -->
     <div class="floating-content relative z-10 -mt-20 pt-24 pb-20 px-6">
-        <div class="max-w-2xl mx-auto space-y-24">
-
-            <!-- CONTADOR -->
+        <div class="max-w-3xl mx-auto space-y-24">
+            
             <div class="text-center" data-aos="zoom-in">
-                <h3 class="text-xs uppercase tracking-[0.3em] mb-8 text-gray-400">Faltan tan solo...</h3>
-                <div class="flex justify-center gap-6 md:gap-10">
-                    <div class="text-center"><span id="days" class="text-5xl font-light text-[#b89b5e]">00</span>
-                        <p class="text-[10px] uppercase mt-2">Días</p>
-                    </div>
-                    <div class="text-center"><span id="hours" class="text-5xl font-light text-[#b89b5e]">00</span>
-                        <p class="text-[10px] uppercase mt-2">Horas</p>
-                    </div>
-                    <div class="text-center"><span id="mins" class="text-5xl font-light text-[#b89b5e]">00</span>
-                        <p class="text-[10px] uppercase mt-2">Mins</p>
-                    </div>
+                <div class="flex justify-center gap-6 md:gap-12">
+                    <div class="text-center"><span id="days" class="text-4xl md:text-5xl font-light text-[#b89b5e]">00</span><p class="text-[9px] uppercase mt-2 tracking-widest">Días</p></div>
+                    <div class="text-center"><span id="hours" class="text-4xl md:text-5xl font-light text-[#b89b5e]">00</span><p class="text-[9px] uppercase mt-2 tracking-widest">Horas</p></div>
+                    <div class="text-center"><span id="mins" class="text-4xl md:text-5xl font-light text-[#b89b5e]">00</span><p class="text-[9px] uppercase mt-2 tracking-widest">Mins</p></div>
+                    <div class="text-center"><span id="secs" class="text-4xl md:text-5xl font-light text-[#b89b5e]">00</span><p class="text-[9px] uppercase mt-2 tracking-widest">Segs</p></div>
                 </div>
             </div>
 
-            <!-- CUÁNDO Y DÓNDE -->
             <div class="text-center space-y-12" data-aos="fade-up">
                 <div class="space-y-4">
-                    <p class="uppercase tracking-[0.2em] text-sm italic">Nuestra Boda</p>
                     <h2 class="text-4xl font-bold text-[#b89b5e]">Sábado 08 de Agosto</h2>
-                    <p class="text-xl">16:00 HORAS</p>
+                    <p class="text-xl tracking-widest font-light text-gray-500">2026 | 16:00 HORAS</p>
                 </div>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-4 p-6 rounded-3xl bg-white/40 border border-white/50">
-                        <h3 class="font-script text-4xl text-[#b89b5e]">Ceremonia</h3>
-                        <p class="text-sm font-semibold">Parroquia San Martín Obispo de Tours</p>
-                        <p class="text-xs text-gray-500">C. Independencia Sur, Col. Centro.</p>
-                        <a target="_blank" href="https://maps.app.goo.gl/dQMKHvYA7cNMd6sHA" class="btn-gold inline-block text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest mt-4">Cómo llegar</a>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8 hotel-card">
+                        <h3 class="font-script text-4xl text-[#b89b5e] mb-4">Ceremonia</h3>
+                        <p class="text-sm font-semibold mb-2">Parroquia San Martín Obispo de Tours</p>
+                        <a target="_blank" href="https://maps.app.goo.gl/YourLink" class="btn-gold inline-block text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest">Ver Ubicación</a>
                     </div>
-                    <div class="space-y-4 p-6 rounded-3xl bg-white/40 border border-white/50">
-                        <h3 class="font-script text-4xl text-[#b89b5e]">Celebración</h3>
-                        <p class="text-sm font-semibold">Salón Club de Leones</p>
-                        <p class="text-xs text-gray-500">Carr. Internacional 6, Col. Centro.</p>
-                        <a target="_blank" href="https://maps.google.com" class="btn-gold inline-block text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest mt-4">Ver mapa</a>
+                    <div class="p-8 hotel-card">
+                        <h3 class="font-script text-4xl text-[#b89b5e] mb-4">Recepción</h3>
+                        <p class="text-sm font-semibold mb-2">Salón Club de Leones</p>
+                        <a target="_blank" href="https://maps.app.goo.gl/YourLink" class="btn-gold inline-block text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest">Ver Mapa</a>
                     </div>
                 </div>
             </div>
 
-            <!-- FAMILIA -->
-            <div class="text-center space-y-8" data-aos="fade-up">
-                <div class="divider"></div>
+            <div class="text-center space-y-10" data-aos="fade-up">
+                <h3 class="font-script text-5xl text-[#b89b5e]">Hospedaje Sugerido</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="hotel-card">
+                        <img src="img/hotel1.jpg" class="h-40 w-full object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-xs mb-3 text-gray-600">OPCIÓN 1</h4>
+                            <a target="_blank" href="#" class="text-[#b89b5e] text-[10px] font-bold border-b border-[#b89b5e] pb-1 uppercase">Ubicación</a>
+                        </div>
+                    </div>
+                    <div class="hotel-card">
+                        <img src="img/hotel2.jpg" class="h-40 w-full object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-xs mb-3 text-gray-600">OPCIÓN 2</h4>
+                            <a target="_blank" href="#" class="text-[#b89b5e] text-[10px] font-bold border-b border-[#b89b5e] pb-1 uppercase">Ubicación</a>
+                        </div>
+                    </div>
+                    <div class="hotel-card">
+                        <img src="img/hotel3.jpg" class="h-40 w-full object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-xs mb-3 text-gray-600">OPCIÓN 3</h4>
+                            <a target="_blank" href="#" class="text-[#b89b5e] text-[10px] font-bold border-b border-[#b89b5e] pb-1 uppercase">Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center space-y-12" data-aos="fade-up">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-bold uppercase text-[#b89b5e] mb-4">Padres de la Novia</h4>
-                        <p class="text-sm leading-relaxed">Carolina Pérez Mendez<br>Gregorio Mirón Cuaxilo</p>
+                    <div class="space-y-3">
+                        <h4 class="text-[10px] font-bold uppercase text-gray-400 tracking-[0.3em]">Padres de la Novia</h4>
+                        <p class="text-xl font-semibold text-[#b89b5e]">Carolina Pérez Mendez<br>Gregorio Mirón Cuaxilo</p>
                     </div>
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-bold uppercase text-[#b89b5e] mb-4">Padres del Novio</h4>
-                        <p class="text-sm leading-relaxed">Cristina Méndez Valencia<br>Alfonso Cano Pérez</p>
+                    <div class="space-y-3">
+                        <h4 class="text-[10px] font-bold uppercase text-gray-400 tracking-[0.3em]">Padres del Novio</h4>
+                        <p class="text-xl font-semibold text-[#b89b5e]">Cristina Méndez Valencia<br>Alfonso Cano Pérez</p>
                     </div>
                 </div>
-                <div class="pt-8">
-                    <h4 class="text-xs font-bold uppercase text-[#b89b5e] mb-4">Nuestros Padrinos</h4>
-                    <p class="text-sm italic">Maria Pascuala Arellano Ruiz<br>Jose Laurearano Ortega García</p>
+                <div class="divider opacity-20"></div>
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase text-gray-400 tracking-[0.3em] mb-4">Nuestros Padrinos</h4>
+                    <p class="font-script text-4xl text-[#b89b5e]">Maria Pascuala Arellano Ruiz</p>
+                    <p class="font-script text-4xl text-[#b89b5e]">Jose Laurearano Ortega García</p>
                 </div>
             </div>
 
-            <!-- CONFIRMACIÓN -->
-            <div class="text-center space-y-8" data-aos="zoom-in">
-                <div class="p-10 rounded-[3rem] bg-gradient-to-b from-white/80 to-white/40 border border-white">
+            <div class="text-center" data-aos="zoom-in">
+                <div class="p-10 rounded-[3rem] bg-white/60 border border-white shadow-xl max-w-md mx-auto">
                     <h2 class="font-script text-6xl text-[#b89b5e] mb-6">Confirmación</h2>
-                    <p class="text-xs text-gray-500 mb-8 uppercase tracking-widest">Por favor, confirma antes del 15 de julio</p>
-                    <div class="max-w-xs mx-auto space-y-4">
-                        <input type="text" id="guestName" placeholder="Tu nombre completo" class="w-full p-4 rounded-full border-none shadow-sm text-sm focus:ring-2 focus:ring-[#b89b5e]">
-                        <select id="totalGuests" class="w-full p-4 rounded-full border-none shadow-sm text-sm text-gray-500 bg-white">
-                            <option value="">¿Cuántos lugares?</option>
-                            <option value="1">1 Persona</option><option value="2">2 Personas</option>
-                            <option value="3">3 Personas</option><option value="4">4 Personas</option><option value="5">5 Personas</option>
-                        </select>
-                        <button onclick="sendRSVP()" class="w-full bg-green-800 text-white py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-xl hover:bg-green-900 transition-all">
-                            Confirmar Asistencia
-                        </button>
+                    <div class="space-y-4 text-left">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-4 mb-1 block">Tu Nombre</label>
+                            <input type="text" id="guestName" placeholder="Nombre completo" class="w-full p-4 rounded-full border-none shadow-sm text-sm bg-white/80">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-4 mb-1 block">Adultos</label>
+                                <select id="totalAdults" class="w-full p-4 rounded-full border-none shadow-sm text-sm text-gray-600 bg-white/80">
+                                    <option value="1">1 Adulto</option><option value="2">2 Adultos</option>
+                                    <option value="3">3 Adultos</option><option value="4">4 Adultos</option>
+                                    <option value="5">5 Adultos</option><option value="6">6 Adultos</option>
+                                    <option value="7">7 Adultos</option><option value="8">8 Adultos</option>
+                                    <option value="9">9 Adultos</option><option value="10">10 Adultos</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-4 mb-1 block">Niños</label>
+                                <select id="totalKids" class="w-full p-4 rounded-full border-none shadow-sm text-sm text-gray-600 bg-white/80">
+                                    <option value="0">Sin niños</option>
+                                    <option value="1">1 Niño</option><option value="2">2 Niños</option>
+                                    <option value="3">3 Niños</option><option value="4">4 Niños</option>
+                                    <option value="5">5 Niños</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="sendRSVP()" class="w-full bg-green-800 text-white py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-lg mt-4">Confirmar por WhatsApp</button>
                     </div>
                 </div>
-                <p class="font-script text-4xl text-[#b89b5e] pt-10 pb-20">¡Gracias por ser parte de nuestra historia!</p>
             </div>
         </div>
     </div>
 
-    <!-- Scripts para animaciones y lógica -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1200,
-            once: true
-        });
+        AOS.init({ duration: 1200, once: true });
 
         const weddingDate = new Date("Aug 8, 2026 16:00:00").getTime();
         setInterval(() => {
@@ -197,29 +167,48 @@
             document.getElementById("days").innerText = Math.floor(diff / 86400000);
             document.getElementById("hours").innerText = Math.floor((diff % 86400000) / 3600000);
             document.getElementById("mins").innerText = Math.floor((diff % 3600000) / 60000);
+            document.getElementById("secs").innerText = Math.floor((diff % 60000) / 1000);
         }, 1000);
+
+        const music = document.getElementById('weddingMusic');
+        const mBtnText = document.getElementById('musicText');
+        let musicStarted = false;
+
+        function iniciarMusica() {
+            if(!musicStarted) {
+                music.play();
+                mBtnText.innerText = "Pausar Música";
+                musicStarted = true;
+            }
+        }
+
+        function toggleMusic(e) {
+            e.stopPropagation();
+            if (music.paused) {
+                music.play();
+                mBtnText.innerText = "Pausar Música";
+            } else {
+                music.pause();
+                mBtnText.innerText = "Música";
+            }
+        }
 
         function sendRSVP() {
             const name = document.getElementById('guestName').value;
-            const count = document.getElementById('totalGuests').value;
+            const adults = document.getElementById('totalAdults').value;
+            const kids = document.getElementById('totalKids').value;
             const phone = "522481557137";
-            if (!name || !count) return alert("Por favor completa tus datos");
-            const msg = `¡Hola! Confirmo mi asistencia a la boda de Diana y Alejandro.\n\nNombre: ${name}\nLugares: ${count}`;
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
+            
+            if (!name) return alert("Por favor, ingresa tu nombre.");
 
-        function toggleMusic() {
-            const m = document.getElementById('weddingMusic');
-            const txt = document.getElementById('musicText');
-            if (m.paused) {
-                m.play();
-                txt.innerText = "Pausar";
-            } else {
-                m.pause();
-                txt.innerText = "Música";
-            }
+            const msg = "*¡Hola!* No nos perderiamos por nada del mundo el inicio de su 'Felices para siempre'. Confirmamos con mucha alegria.\n\n" +
+                        "*Nombre:* " + name + "\n" +
+                        "*Adultos:* " + adults + "\n" +
+                        "*Niños:* " + kids + "\n\n" +
+                        "¡Estamos listos para celebrar su amor!";
+            
+            window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg), '_blank');
         }
     </script>
 </body>
-
 </html>
